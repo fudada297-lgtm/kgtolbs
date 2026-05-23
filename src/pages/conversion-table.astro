@@ -1,49 +1,27 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const title = 'KG to LBS Conversion Table - 1 to 100 Kilograms to Pounds Chart';
-const description = 'Complete kg to lbs conversion table from 1 to 100 kilograms. Quick reference chart for kilograms to pounds. Free, printable conversion table.';
-
-const rows: { kg: number; lbs: string }[] = [];
-for (let kg = 1; kg <= 100; kg++) {
-  rows.push({ kg, lbs: (kg * 2.20462262185).toFixed(4) });
-}
 ---
 
-<BaseLayout title={title} description={description} canonical="https://kgtolbs.cc/conversion-table">
-  <script type="application/ld+json" set:html={`{
-    "@context": "https://schema.org",
-    "@type": "Table",
-    "about": "Kilograms to Pounds conversion chart from 1 to 100"
-  }`} />
-
-  <div class="hero">
-    <h1>KG to LBS Conversion Table</h1>
-    <p>Complete chart: 1 kg = 2.2046 lbs up to 100 kg = 220.4623 lbs</p>
-  </div>
-
-  <div class="card">
-    <h2>1–100 Kilograms to Pounds</h2>
-    <p>Quick lookup table. For custom values, use our <a href="/" style="color:#667eea;">interactive converter</a>.</p>
-
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:0.5rem;margin-top:1rem;">
-      {rows.map(row => (
-        <div style="background:#f8fafc;padding:0.5rem 0.75rem;border-radius:8px;font-size:0.9rem;display:flex;justify-content:space-between;">
-          <span><strong>{row.kg} kg</strong></span>
-          <span style="color:#475569;">{row.lbs} lbs</span>
-        </div>
-      ))}
+<BaseLayout title="KG to LBS Conversion Table — 1 to 100 Chart" description="Complete kilograms to pounds conversion chart from 1 to 100 kg. Free reference table." canonical="https://kgtolbs.cc/conversion-table">
+  <section class="hero">
+    <div class="wrap">
+      <h1 style="font-size:2.2rem;font-weight:800;color:#1a202c;margin-bottom:0.3rem;">KG to LBS Conversion Table</h1>
+      <p style="font-size:1.1rem;color:var(--text-light);">1–100 kilograms to pounds quick reference</p>
     </div>
-  </div>
-
-  <div class="card">
-    <h2>How to Use This Table</h2>
-    <p>Find the kilogram value in the chart above, then read the equivalent in pounds. All values use the international standard conversion rate: <strong>1 kg = 2.20462262185 lbs</strong>.</p>
-    <p style="margin-top:1rem;">For decimal values (e.g. 62.5 kg), please use the <a href="/" style="color:#667eea;">KG to LBS Calculator</a> on our homepage.</p>
-
-    <div class="inline-links">
-      <a href="/">Back to Converter</a> &middot;
-      <a href="/how-to-convert-kg-to-lbs">How to Convert</a>
+  </section>
+  <div class="wrap" style="padding-top:1.5rem;">
+    <div class="sc">
+      <div class="sticky-table">
+        <table>
+          <thead><tr><th>Kilograms (kg)</th><th>Pounds (lbs)</th></tr></thead>
+          <tbody>
+            {Array.from({length: 100}, (_, i) => i + 1).map(kg => (
+              <tr><td><strong>{kg} kg</strong></td><td>{(kg * 2.20462262185).toFixed(4)} lbs</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:1rem;">Need a custom value? Use the <a href="/" style="color:var(--teal);">interactive converter</a>.</p>
     </div>
   </div>
 </BaseLayout>

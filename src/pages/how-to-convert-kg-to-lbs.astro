@@ -1,76 +1,42 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Converter from '../components/Converter.astro';
-
-const title = 'How to Convert KG to LBS — Complete Guide with Formula & Examples';
-const description = 'Learn how to convert kilograms to pounds. Step-by-step guide with the kg to lbs formula, worked examples, and a free online converter tool.';
+const examples = [
+  { kg: 50, lbs: (50 * 2.20462262185).toFixed(2) },
+  { kg: 62.5, lbs: (62.5 * 2.20462262185).toFixed(2) },
+  { kg: 75, lbs: (75 * 2.20462262185).toFixed(2) },
+  { kg: 100, lbs: (100 * 2.20462262185).toFixed(2) },
+];
 ---
 
-<BaseLayout title={title} description={description} canonical="https://kgtolbs.cc/how-to-convert-kg-to-lbs">
-  <script type="application/ld+json" set:html={`{
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    "name": "How to Convert Kilograms to Pounds",
-    "description": "${description}",
-    "step": [
-      { "@type": "HowToStep", "position": 1, "name": "Understand the Formula", "text": "Pounds = Kilograms × 2.20462262185." },
-      { "@type": "HowToStep", "position": 2, "name": "Multiply Your KG Value", "text": "Take your weight in kilograms and multiply it by 2.2046." },
-      { "@type": "HowToStep", "position": 3, "name": "Get Your Result", "text": "The result is your weight in pounds." }
-    ]
-  }`} />
-
-  <div class="hero">
-    <h1>How to Convert KG to LBS</h1>
-    <p>Step-by-step guide with formula, examples, and a free converter</p>
-  </div>
-
-  <Converter />
-
-  <div class="card">
-    <h2>The KG to LBS Formula</h2>
-    <p>The standard international formula is:</p>
-
-    <div class="formula-box">
-      <strong>Pounds (lbs) = Kilograms (kg) × 2.20462262185</strong>
+<BaseLayout title="How to Convert KG to LBS — Complete Guide" description="Learn how to convert kg to lbs. Formula, worked examples, and a free converter." canonical="https://kgtolbs.cc/how-to-convert-kg-to-lbs">
+  <section class="hero">
+    <div class="wrap">
+      <h1 style="font-size:2.2rem;font-weight:800;color:#1a202c;margin-bottom:0.3rem;">How to Convert KG to LBS</h1>
+      <p style="font-size:1.1rem;color:var(--text-light);">Step-by-step guide with formula and examples</p>
     </div>
-
-    <p>For quick mental calculations, you can approximate:</p>
-
-    <div class="formula-box">
-      Pounds (lbs) &asymp; Kilograms (kg) × <strong>2.2</strong> <span style="font-size:0.85rem;color:#94a3b8;">(approximate, ~0.2% error)</span>
+  </section>
+  <div class="wrap" style="padding-top:1.5rem;">
+    <div class="sc">
+      <h2>The Formula</h2>
+      <div class="formula">Pounds (lbs) = Kilograms (kg) × 2.20462262185</div>
+      <p>Quick mental math: <strong>lbs &asymp; kg × 2.2</strong></p>
+      <p>The pound is legally defined as <strong>0.45359237 kg</strong>. Therefore 1 kg = 1 / 0.45359237 = 2.20462262185 lbs.</p>
     </div>
-
-    <h3>Why 2.2046?</h3>
-    <p>The international avoirdupois pound is legally defined as exactly <strong>0.45359237 kilograms</strong>. Therefore:</p>
-    <p style="text-align:center;font-size:1.1rem;margin:1rem 0;">1 kg = 1 ÷ 0.45359237 = <strong>2.20462262185 lbs</strong></p>
-  </div>
-
-  <div class="card">
-    <h2>Worked Examples</h2>
-
-    <h3>Example 1: 75 kg to lbs</h3>
-    <div class="formula-box">75 × 2.20462262185 = <strong>{(75 * 2.20462262185).toFixed(2)} lbs</strong></div>
-    <p>A person weighing 75 kg weighs approximately {(75 * 2.20462262185).toFixed(2)} pounds.</p>
-
-    <h3>Example 2: 62.5 kg to lbs</h3>
-    <div class="formula-box">62.5 × 2.20462262185 = <strong>{(62.5 * 2.20462262185).toFixed(2)} lbs</strong></div>
-
-    <h3>Example 3: 100 kg to lbs</h3>
-    <div class="formula-box">100 × 2.20462262185 = <strong>{(100 * 2.20462262185).toFixed(2)} lbs</strong></div>
-  </div>
-
-  <div class="card">
-    <h2>Common Use Cases</h2>
-    <ul>
-      <li><strong>Fitness & Body Weight:</strong> Most countries measure body weight in kg, but the US, UK, and Canada commonly use lbs.</li>
-      <li><strong>Cooking & Baking:</strong> International recipes often list ingredients in kilograms; US recipes use pounds.</li>
-      <li><strong>Shipping & Logistics:</strong> International weight limits are frequently shown in both kg and lbs.</li>
-      <li><strong>Healthcare:</strong> Patient weight tracking and medication dosing often require conversion.</li>
-    </ul>
-
-    <div class="inline-links">
-      <a href="/">Back to Converter</a> &middot;
-      <a href="/conversion-table">View Full Table</a>
+    <div class="sc">
+      <h2>Worked Examples</h2>
+      {examples.map(ex => (
+        <div class="formula">{ex.kg} kg × 2.2046 = <strong>{ex.lbs} lbs</strong></div>
+      ))}
+    </div>
+    <div class="sc">
+      <h2>When You Need This Conversion</h2>
+      <ul>
+        <li><strong>Fitness:</strong> Body weight in kg to lbs</li>
+        <li><strong>Cooking:</strong> International recipes</li>
+        <li><strong>Shipping:</strong> Package weight limits</li>
+        <li><strong>Healthcare:</strong> Patient weight, dosing</li>
+      </ul>
+      <div class="links-row"><a href="/">Back to Converter</a> &middot; <a href="/conversion-table">View Table</a></div>
     </div>
   </div>
 </BaseLayout>

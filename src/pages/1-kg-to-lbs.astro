@@ -1,48 +1,22 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Converter from '../components/Converter.astro';
-
-const kg = 1;
-const lbs = (kg * 2.20462262185).toFixed(4);
-const title = `1 KG to LBS - Convert ${kg} Kilogram to Pounds`;
-const description = `Convert ${kg} kg to lbs instantly. ${kg} kilogram equals ${lbs} pounds. Free online converter with step-by-step calculation.`;
+const kg = 1; const lbs = (kg * 2.20462262185).toFixed(4);
 ---
 
-<BaseLayout title={title} description={description} canonical="https://kgtolbs.cc/1-kg-to-lbs">
-  <script type="application/ld+json" set:html={`{
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "1 KG to LBS Converter",
-    "url": "https://kgtolbs.cc/1-kg-to-lbs",
-    "description": "${description}"
-  }`} />
-
-  <div class="hero">
-    <h1>{kg} KG to LBS</h1>
-    <p>{kg} kilogram = {lbs} pounds</p>
-  </div>
-
-  <Converter initialKg={String(kg)} initialLbs={lbs} />
-
-  <div class="card">
-    <h2>{kg} Kilogram to Pounds — Complete Breakdown</h2>
-    <p><strong>{kg} kilogram (kg)</strong> equals exactly <strong>{lbs} pounds (lbs)</strong>.</p>
-
-    <div class="formula-box">
-      {kg} kg × 2.20462262185 = <strong>{lbs} lbs</strong>
+<BaseLayout title={`${kg} KG to LBS — ${kg} kg = ${lbs} lbs`} description={`${kg} kilogram equals ${lbs} pounds. Free converter with detailed calculation.`} canonical="https://kgtolbs.cc/1-kg-to-lbs">
+  <section class="hero">
+    <div class="wrap">
+      <h1 style="font-size:2.2rem;font-weight:800;color:#1a202c;margin-bottom:0.3rem;">{kg} KG to LBS</h1>
+      <p style="font-size:1.1rem;color:var(--text-light);">{kg} kilogram = <strong>{lbs}</strong> pounds</p>
     </div>
-
-    <h3>Quick Facts</h3>
-    <ul>
-      <li>1 kilogram is defined as the mass of 1 liter of water</li>
-      <li>1 pound is defined as exactly 0.45359237 kilograms</li>
-      <li>Therefore, 1 kg = 1 / 0.45359237 = 2.20462262185 lbs</li>
-    </ul>
-
-    <div class="inline-links">
-      <a href="/">Home</a> &middot;
-      <a href="/5-kg-to-lbs">5 kg to lbs</a> &middot;
-      <a href="/10-kg-to-lbs">10 kg to lbs</a>
+  </section>
+  <div class="wrap" style="padding-top:1.5rem;">
+    <div class="sc">
+      <h2>{kg} Kilogram to Pounds Breakdown</h2>
+      <div class="formula">{kg} kg × 2.20462262185 = <strong>{lbs} lbs</strong></div>
+      <p>1 kilogram is exactly 2.20462262185 pounds. Multiply {kg} by this factor to get {lbs} pounds.</p>
+      <p style="margin-top:0.5rem;">Rounded: <strong>{kg} kg &asymp; {parseFloat(lbs).toFixed(2)} lbs</strong></p>
+      <div class="links-row"><a href="/">Home</a> &middot; <a href="/5-kg-to-lbs">5 kg to lbs</a> &middot; <a href="/10-kg-to-lbs">10 kg to lbs</a></div>
     </div>
   </div>
 </BaseLayout>

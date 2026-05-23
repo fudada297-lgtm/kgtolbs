@@ -1,43 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Converter from '../components/Converter.astro';
-
-const kg = 10;
-const lbs = (kg * 2.20462262185).toFixed(4);
-const title = `10 KG to LBS - Convert ${kg} Kilograms to Pounds`;
-const description = `Convert ${kg} kg to lbs instantly. ${kg} kilograms equals ${lbs} pounds. Free online converter with real-world examples.`;
+const kg = 10; const lbs = (kg * 2.20462262185).toFixed(4);
 ---
 
-<BaseLayout title={title} description={description} canonical="https://kgtolbs.cc/10-kg-to-lbs">
-  <script type="application/ld+json" set:html={`{
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "10 KG to LBS Converter",
-    "url": "https://kgtolbs.cc/10-kg-to-lbs"
-  }`} />
-
-  <div class="hero">
-    <h1>{kg} KG to LBS</h1>
-    <p>{kg} kilograms = {lbs} pounds</p>
-  </div>
-
-  <Converter initialKg={String(kg)} initialLbs={lbs} />
-
-  <div class="card">
-    <h2>{kg} Kilograms to Pounds — Complete Breakdown</h2>
-    <p><strong>{kg} kilograms (kg)</strong> equals exactly <strong>{lbs} pounds (lbs)</strong>.</p>
-
-    <div class="formula-box">
-      {kg} kg × 2.20462262185 = <strong>{lbs} lbs</strong>
+<BaseLayout title={`${kg} KG to LBS — ${kg} kg = ${lbs} lbs`} description={`${kg} kilograms equals ${lbs} pounds. Free converter with real-world examples.`} canonical="https://kgtolbs.cc/10-kg-to-lbs">
+  <section class="hero">
+    <div class="wrap">
+      <h1 style="font-size:2.2rem;font-weight:800;color:#1a202c;margin-bottom:0.3rem;">{kg} KG to LBS</h1>
+      <p style="font-size:1.1rem;color:var(--text-light);">{kg} kilograms = <strong>{lbs}</strong> pounds</p>
     </div>
-
-    <h3>Real-World Reference</h3>
-    <p>A standard gym dumbbell, a medium suitcase, or a large watermelon typically weighs around <strong>{kg} kg ({lbs} lbs)</strong>. Many airline carry-on baggage limits are set at {kg} kg.</p>
-
-    <div class="inline-links">
-      <a href="/">Home</a> &middot;
-      <a href="/1-kg-to-lbs">1 kg to lbs</a> &middot;
-      <a href="/5-kg-to-lbs">5 kg to lbs</a>
+  </section>
+  <div class="wrap" style="padding-top:1.5rem;">
+    <div class="sc">
+      <h2>{kg} Kilograms to Pounds Breakdown</h2>
+      <div class="formula">{kg} kg × 2.20462262185 = <strong>{lbs} lbs</strong></div>
+      <p><strong>{kg} kg</strong> is roughly the weight of a standard gym dumbbell or a medium suitcase. Most airlines set carry-on limits at {kg} kg.</p>
+      <div class="links-row"><a href="/">Home</a> &middot; <a href="/1-kg-to-lbs">1 kg to lbs</a> &middot; <a href="/5-kg-to-lbs">5 kg to lbs</a></div>
     </div>
   </div>
 </BaseLayout>
