@@ -16,284 +16,36 @@ const { title, description, canonical } = Astro.props;
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <SEO title={title} description={description} canonical={canonical} />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --teal: #319795;
-      --teal-light: #e6fffa;
-      --teal-dark: #234e52;
-      --bg: #f7fafc;
-      --white: #ffffff;
-      --text: #2d3748;
-      --text-light: #718096;
-      --text-lighter: #a0aec0;
-      --border: #e2e8f0;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
-      --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
-      --radius: 12px;
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50: '#e6fffa', 100: '#b2f5ea', 200: '#81e6d9', 300: '#4fd1c5', 400: '#38b2ac', 500: '#319795', 600: '#2c7a7b', 700: '#285e61', 800: '#234e52', 900: '#1d4044' }
+          }
+        }
+      }
     }
-    html { font-size: 16px; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-    .wrap { max-width: 960px; margin: 0 auto; padding: 0 1rem; }
-
-    /* Header */
-    .header {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      padding: 0.85rem 0;
-      position: sticky; top: 0; z-index: 20;
-    }
-    .header .wrap { display: flex; align-items: center; justify-content: space-between; }
-    .header .logo { font-size: 1.15rem; font-weight: 700; color: var(--text); text-decoration: none; }
-    .header .logo em { font-style: normal; color: var(--teal); }
-    .header nav { display: flex; gap: 1.25rem; }
-    .header nav a { color: var(--text-light); text-decoration: none; font-size: 0.88rem; font-weight: 500; }
-    .header nav a:hover { color: var(--teal); }
-    @media (max-width: 600px) {
-      .header nav a { font-size: 0.8rem; }
-      .header .logo { font-size: 1rem; }
-    }
-
-    /* Hero */
-    .hero {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      padding: 2.5rem 0;
-    }
-    @media (max-width: 640px) { .hero { padding: 1.5rem 0; } }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 380px;
-      gap: 2.5rem;
-      align-items: start;
-    }
-    @media (max-width: 800px) { .hero-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
-    .hero h1 { font-size: 2.5rem; font-weight: 800; color: #1a202c; line-height: 1.2; margin-bottom: 0.5rem; }
-    .hero p { font-size: 1.05rem; color: var(--text-light); }
-    @media (max-width: 600px) {
-      .hero h1 { font-size: 1.7rem; }
-      .hero p { font-size: 0.95rem; }
-    }
-
-    /* Converter card */
-    .conv-card {
-      background: var(--white);
-      border-radius: 16px;
-      box-shadow: var(--shadow-md);
-      padding: 1.5rem;
-    }
-    .conv-hint { font-size: 0.8rem; color: var(--text-lighter); margin-bottom: 0.75rem; }
-
-    .conv-row {
-      display: grid;
-      grid-template-columns: 1fr 40px 1fr;
-      align-items: end;
-      gap: 0.5rem;
-      margin-bottom: 0.75rem;
-    }
-    .conv-row label {
-      display: block;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: #4a5568;
-      margin-bottom: 0.3rem;
-    }
-    .conv-row input {
-      width: 100%;
-      padding: 0.75rem 0.8rem;
-      font-size: 1.1rem;
-      border: 1.5px solid var(--border);
-      border-radius: 10px;
-      outline: none;
-      background: var(--white);
-      -webkit-appearance: none;
-      appearance: none;
-    }
-    .conv-row input:focus {
-      border-color: var(--teal);
-      box-shadow: 0 0 0 3px rgba(49,151,149,0.1);
-    }
-    .conv-unit { font-size: 0.75rem; color: var(--text-lighter); margin-top: 0.2rem; }
-
-    .swap {
-      width: 36px; height: 36px;
-      border: 1.5px solid var(--border);
-      border-radius: 50%;
-      background: var(--white);
-      color: var(--teal);
-      font-size: 1.2rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-bottom: 0.3rem;
-      transition: all 0.15s;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .swap:active { background: var(--teal-light); border-color: var(--teal); }
-
-    .conv-formula { text-align: center; font-size: 0.8rem; color: var(--text-lighter); margin-bottom: 0.6rem; }
-
-    .copy-btn {
-      width: 100%; padding: 0.6rem;
-      border: 1.5px solid var(--border);
-      border-radius: 10px;
-      background: var(--white);
-      color: var(--teal);
-      font-size: 0.88rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.15s;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .copy-btn:active { background: var(--teal-light); }
-
-    /* Tabs */
-    .tabs-wrap {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.25rem;
-      background: var(--white);
-      border-radius: 12px;
-      padding: 0.35rem;
-      margin-bottom: 1.5rem;
-      box-shadow: var(--shadow-sm);
-    }
-    .tab-btn {
-      flex: 1;
-      min-width: 120px;
-      padding: 0.55rem 0.8rem;
-      border: none;
-      border-radius: 10px;
-      background: transparent;
-      color: var(--text-light);
-      font-size: 0.85rem;
-      font-weight: 500;
-      cursor: pointer;
-      text-align: center;
-      white-space: nowrap;
-      transition: all 0.15s;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .tab-btn.active { background: var(--teal); color: white; font-weight: 600; }
-    @media (max-width: 500px) {
-      .tab-btn { font-size: 0.75rem; padding: 0.5rem 0.5rem; min-width: auto; }
-    }
-
-    .tab-panel { display: none; }
-    .tab-panel.show { display: block; }
-
-    /* Section cards */
-    .sc {
-      background: var(--white);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-sm);
-      padding: 1.75rem;
-      margin-bottom: 1.25rem;
-    }
-    .sc h2 { font-size: 1.25rem; margin-bottom: 0.75rem; color: #1a202c; }
-    .sc h3 { font-size: 1rem; margin: 1rem 0 0.4rem; color: var(--text); }
-    .sc p, .sc li { margin-bottom: 0.6rem; color: #4a5568; }
-    .sc ul, .sc ol { padding-left: 1.4rem; margin-bottom: 0.8rem; }
-
-    .formula {
-      background: var(--teal-light);
-      border: 1px solid #b2f5ea;
-      padding: 0.8rem 1.2rem;
-      border-radius: 10px;
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--teal-dark);
-      text-align: center;
-      margin: 0.75rem 0;
-    }
-
-    /* Quick list */
-    .quick { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.4rem; }
-    .quick a {
-      background: var(--bg);
-      padding: 0.5rem 0.7rem;
-      border-radius: 8px;
-      font-size: 0.88rem;
-      display: flex;
-      justify-content: space-between;
-      text-decoration: none;
-      color: var(--text);
-      transition: background 0.15s;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .quick a:active, .quick a:hover { background: #edf2f7; }
-    .quick a .kg { font-weight: 600; }
-    .quick a .lbs { color: var(--text-light); }
-
-    /* Table */
-    .sticky-table { max-height: 60vh; overflow-y: auto; border-radius: 10px; border: 1px solid var(--border); }
-    .sticky-table table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-    .sticky-table thead { position: sticky; top: 0; z-index: 2; }
-    .sticky-table thead th {
-      background: var(--teal);
-      color: white;
-      padding: 0.55rem 0.8rem;
-      font-weight: 600;
-      text-align: center;
-    }
-    .sticky-table tbody td {
-      padding: 0.45rem 0.8rem;
-      border-bottom: 1px solid #f1f5f9;
-      text-align: center;
-    }
-    .sticky-table tbody tr:nth-child(even) { background: #fafcfc; }
-    .sticky-table tbody tr:active { background: #f0f5f5; }
-
-    /* FAQ */
-    .faq-q { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #f1f5f9; }
-    .faq-q:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-    .faq-q h3 { margin-top: 0; color: var(--teal); font-size: 0.98rem; cursor: pointer; }
-
-    /* Footer */
-    .ft {
-      text-align: center;
-      padding: 2rem 0;
-      color: var(--text-lighter);
-      font-size: 0.85rem;
-      border-top: 1px solid var(--border);
-      margin-top: 2rem;
-    }
-    .ft a { color: var(--teal); text-decoration: none; }
-    .links-row { text-align: center; margin-top: 1rem; }
-    .links-row a { color: var(--teal); text-decoration: none; font-weight: 500; margin: 0 0.5rem; }
-
-    .ad-spot {
-      background: var(--bg); border: 1.5px dashed var(--border);
-      border-radius: 10px; padding: 2rem; text-align: center;
-      color: var(--text-lighter); font-size: 0.85rem; margin: 1.25rem 0;
-    }
-  </style>
+  </script>
 </head>
-<body>
-  <header class="header">
-    <div class="wrap">
-      <a href="/" class="logo">KG<em>to</em>LBS<em>.cc</em></a>
-      <nav>
-        <a href="/">Converter</a>
-        <a href="/conversion-table">Table</a>
-        <a href="/how-to-convert-kg-to-lbs">How To</a>
+<body class="bg-gray-50 min-h-screen antialiased">
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-20">
+    <div class="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
+      <a href="/" class="text-lg font-bold text-gray-800">KG<span class="text-brand-500">to</span>LBS<span class="text-brand-500">.cc</span></a>
+      <nav class="flex gap-4 sm:gap-6 text-sm font-medium text-gray-500">
+        <a href="/" class="hover:text-brand-500 transition-colors">Converter</a>
+        <a href="/conversion-table" class="hover:text-brand-500 transition-colors">Table</a>
+        <a href="/how-to-convert-kg-to-lbs" class="hover:text-brand-500 transition-colors">How To</a>
       </nav>
     </div>
   </header>
 
   <main><slot /></main>
 
-  <footer class="ft">
-    <div class="wrap">
-      <p>&copy; 2026 <a href="/">KG to LBS Converter</a> &mdash; Free Online Weight Conversion Tools</p>
+  <footer class="border-t border-gray-200 mt-12">
+    <div class="max-w-5xl mx-auto px-4 py-8 text-center text-sm text-gray-400">
+      <p>&copy; 2026 <a href="/" class="text-brand-500 hover:underline">KG to LBS Converter</a> &mdash; Free Online Weight Conversion Tools</p>
     </div>
   </footer>
 </body>

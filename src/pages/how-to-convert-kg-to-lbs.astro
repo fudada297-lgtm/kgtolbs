@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
 const examples = [
   { kg: 50, lbs: (50 * 2.20462262185).toFixed(2) },
   { kg: 62.5, lbs: (62.5 * 2.20462262185).toFixed(2) },
@@ -8,35 +9,46 @@ const examples = [
 ];
 ---
 
-<BaseLayout title="How to Convert KG to LBS — Complete Guide" description="Learn how to convert kg to lbs. Formula, worked examples, and a free converter." canonical="https://kgtolbs.cc/how-to-convert-kg-to-lbs">
-  <section class="hero">
-    <div class="wrap">
-      <h1 style="font-size:2.2rem;font-weight:800;color:#1a202c;margin-bottom:0.3rem;">How to Convert KG to LBS</h1>
-      <p style="font-size:1.1rem;color:var(--text-light);">Step-by-step guide with formula and examples</p>
+<BaseLayout title="How to Convert KG to LBS — Complete Guide" description="Learn how to convert kg to lbs. Formula, worked examples, and free converter." canonical="https://kgtolbs.cc/how-to-convert-kg-to-lbs">
+  <section class="bg-white border-b border-gray-100">
+    <div class="max-w-5xl mx-auto px-4 py-12">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-2">How to Convert KG to LBS</h1>
+      <p class="text-lg text-gray-500">Step-by-step guide with formula and worked examples</p>
     </div>
   </section>
-  <div class="wrap" style="padding-top:1.5rem;">
-    <div class="sc">
-      <h2>The Formula</h2>
-      <div class="formula">Pounds (lbs) = Kilograms (kg) × 2.20462262185</div>
-      <p>Quick mental math: <strong>lbs &asymp; kg × 2.2</strong></p>
-      <p>The pound is legally defined as <strong>0.45359237 kg</strong>. Therefore 1 kg = 1 / 0.45359237 = 2.20462262185 lbs.</p>
+  <div class="max-w-3xl mx-auto px-4 py-8 space-y-5">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-3">The Formula</h2>
+      <div class="bg-brand-50 border border-brand-100 rounded-lg px-4 py-3 text-center font-semibold text-brand-800 text-sm sm:text-base mb-3">
+        Pounds (lbs) = Kilograms (kg) × 2.20462262185
+      </div>
+      <p class="text-gray-600 mb-2">For quick mental math: <strong>lbs &asymp; kg × 2.2</strong></p>
+      <p class="text-gray-600 text-sm">The pound is legally defined as 0.45359237 kg. Therefore 1 kg = 1 / 0.45359237 = 2.20462262185 lbs.</p>
     </div>
-    <div class="sc">
-      <h2>Worked Examples</h2>
-      {examples.map(ex => (
-        <div class="formula">{ex.kg} kg × 2.2046 = <strong>{ex.lbs} lbs</strong></div>
-      ))}
+
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-3">Worked Examples</h2>
+      <div class="space-y-3">
+        {examples.map(ex => (
+          <div class="bg-brand-50 border border-brand-100 rounded-lg px-4 py-2.5 text-center font-semibold text-brand-800 text-sm sm:text-base">
+            {ex.kg} kg × 2.2046 = <strong>{ex.lbs} lbs</strong>
+          </div>
+        ))}
+      </div>
     </div>
-    <div class="sc">
-      <h2>When You Need This Conversion</h2>
-      <ul>
-        <li><strong>Fitness:</strong> Body weight in kg to lbs</li>
-        <li><strong>Cooking:</strong> International recipes</li>
-        <li><strong>Shipping:</strong> Package weight limits</li>
-        <li><strong>Healthcare:</strong> Patient weight, dosing</li>
+
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-3">When You Need This</h2>
+      <ul class="space-y-2 text-gray-600 list-disc pl-5">
+        <li><strong class="text-gray-800">Fitness:</strong> Body weight tracking in kg to lbs</li>
+        <li><strong class="text-gray-800">Cooking:</strong> International recipe conversions</li>
+        <li><strong class="text-gray-800">Shipping:</strong> Package weight limits</li>
+        <li><strong class="text-gray-800">Healthcare:</strong> Patient weight and medication dosing</li>
       </ul>
-      <div class="links-row"><a href="/">Back to Converter</a> &middot; <a href="/conversion-table">View Table</a></div>
+      <div class="flex gap-4 mt-4 text-sm font-medium">
+        <a href="/" class="text-brand-500 hover:underline">Back to Converter</a>
+        <a href="/conversion-table" class="text-brand-500 hover:underline">View Table</a>
+      </div>
     </div>
   </div>
 </BaseLayout>

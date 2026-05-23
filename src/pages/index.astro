@@ -2,28 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const title = 'KG to LBS Converter — Free Online Kilograms to Pounds Calculator';
-const description = 'Free online weight converter. Convert kg to lbs, lbs to kg, kg to stones, grams to ounces. Instant results, no sign-up required. Works on all devices.';
+const description = 'Free online weight converter. Convert kg to lbs, lbs to kg, kg to stones, grams to ounces. Works on iPhone, Android, and desktop. Instant results.';
 
-const quickKgLbs = [
-  { kg: 1, lbs: '2.2046' },{ kg: 5, lbs: '11.0231' },{ kg: 10, lbs: '22.0462' },
-  { kg: 20, lbs: '44.0925' },{ kg: 30, lbs: '66.1387' },{ kg: 40, lbs: '88.1849' },
-  { kg: 50, lbs: '110.2311' },{ kg: 60, lbs: '132.2774' },{ kg: 70, lbs: '154.3236' },
-  { kg: 75, lbs: '165.3467' },{ kg: 80, lbs: '176.3698' },{ kg: 90, lbs: '198.4160' },
-  { kg: 100, lbs: '220.4623' },
-];
-
-const quickLbsKg = [
-  { lbs: 1, kg: '0.4536' },{ lbs: 5, kg: '2.2680' },{ lbs: 10, kg: '4.5359' },
-  { lbs: 20, kg: '9.0718' },{ lbs: 50, kg: '22.6796' },{ lbs: 100, kg: '45.3592' },
-  { lbs: 150, kg: '68.0389' },{ lbs: 180, kg: '81.6466' },{ lbs: 200, kg: '90.7185' },
-  { lbs: 220, kg: '99.7903' },{ lbs: 250, kg: '113.3981' },{ lbs: 300, kg: '136.0777' },
-];
-
-const quickGramsOz = [
-  { g: 1, oz: '0.0353' },{ g: 10, oz: '0.3527' },{ g: 50, oz: '1.7637' },
-  { g: 100, oz: '3.5274' },{ g: 200, oz: '7.0548' },{ g: 250, oz: '8.8185' },
-  { g: 500, oz: '17.6370' },{ g: 1000, oz: '35.2740' },
-];
+const quickKgLbs = [1,5,10,20,30,40,50,60,70,75,80,90,100];
+const quickLbsKg = [1,5,10,20,50,100,150,180,200,220,250,300];
+const quickGramsOz = [1,10,50,100,200,250,500,1000];
+const stonesKg = [50,55,60,65,70,75,80,85,90,95,100,120];
 ---
 
 <BaseLayout title={title} description={description}>
@@ -38,202 +22,195 @@ const quickGramsOz = [
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
   }`} />
 
-  <section class="hero">
-    <div class="wrap">
-      <div class="hero-grid">
-        <div class="hero-text">
-          <h1>Convert kilograms into pounds quickly.</h1>
-          <p>Free weight converter supporting kg to lbs, lbs to kg, kg to stones, and grams to ounces. Works on iPhone, Android, and desktop.</p>
+  <!-- Hero -->
+  <section class="bg-white border-b border-gray-100">
+    <div class="max-w-5xl mx-auto px-4 py-10 md:py-16">
+      <div class="grid md:grid-cols-5 gap-8 items-start">
+        <!-- Left text -->
+        <div class="md:col-span-3">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-3">
+            Convert kilograms into pounds quickly.
+          </h1>
+          <p class="text-base sm:text-lg text-gray-500 max-w-md">
+            Easily enter your kilogram weight and instantly get the result in pounds. Supports kg to lbs, lbs to kg, stones, and ounces.
+          </p>
         </div>
-        <div id="hero-converter">
-          <div class="conv-card">
-            <p class="conv-hint">Type a number or press the arrow key to swap</p>
-            <div class="conv-row">
-              <div>
-                <label for="conv-a">Kilograms</label>
-                <input type="number" id="conv-a" placeholder="0" min="0" step="any">
-                <p class="conv-unit">kg</p>
+        <!-- Right: converter card -->
+        <div class="md:col-span-2">
+          <div class="bg-white rounded-2xl shadow-xl shadow-gray-200/50 border border-gray-100 p-5 sm:p-6">
+            <!-- Tabs -->
+            <div class="flex flex-wrap gap-1 mb-4 bg-gray-100 rounded-lg p-1">
+              <button class="tab-btn flex-1 min-w-[70px] px-2 py-1.5 rounded-md text-xs sm:text-sm font-medium text-center transition-colors bg-brand-500 text-white" data-tab="kg-lbs">kg → lbs</button>
+              <button class="tab-btn flex-1 min-w-[70px] px-2 py-1.5 rounded-md text-xs sm:text-sm font-medium text-center transition-colors text-gray-500 hover:text-gray-700" data-tab="lbs-kg">lbs → kg</button>
+              <button class="tab-btn flex-1 min-w-[70px] px-2 py-1.5 rounded-md text-xs sm:text-sm font-medium text-center transition-colors text-gray-500 hover:text-gray-700" data-tab="kg-stones">kg → st</button>
+              <button class="tab-btn flex-1 min-w-[70px] px-2 py-1.5 rounded-md text-xs sm:text-sm font-medium text-center transition-colors text-gray-500 hover:text-gray-700" data-tab="grams-oz">g → oz</button>
+            </div>
+            <!-- Inputs -->
+            <p class="text-xs text-gray-400 mb-3">Type a number or press arrow key to swap</p>
+            <div class="flex items-end gap-2 mb-3">
+              <div class="flex-1">
+                <label for="conv-a" class="block text-xs font-semibold text-gray-600 mb-1">Kilograms</label>
+                <input type="number" id="conv-a" placeholder="0" min="0" step="any" class="w-full px-3 py-2.5 text-base border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-200 focus:border-brand-400 transition-shadow">
+                <p class="text-[10px] text-gray-400 mt-0.5 kg-unit">kg</p>
               </div>
-              <button class="swap" id="swap-btn" aria-label="Swap units">⇄</button>
-              <div>
-                <label for="conv-b">Pounds</label>
-                <input type="number" id="conv-b" placeholder="0" min="0" step="any">
-                <p class="conv-unit">lbs</p>
+              <button id="swap-btn" class="w-9 h-9 rounded-full border-2 border-gray-200 flex items-center justify-center text-brand-500 text-lg hover:border-brand-400 hover:bg-brand-50 transition-colors flex-shrink-0 mb-1" aria-label="Swap">⇄</button>
+              <div class="flex-1">
+                <label for="conv-b" class="block text-xs font-semibold text-gray-600 mb-1">Pounds</label>
+                <input type="number" id="conv-b" placeholder="0" min="0" step="any" class="w-full px-3 py-2.5 text-base border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-200 focus:border-brand-400 transition-shadow">
+                <p class="text-[10px] text-gray-400 mt-0.5 lbs-unit">lbs</p>
               </div>
             </div>
-            <p class="conv-formula" id="conv-rate">1 kg = 2.2046 lbs</p>
-            <button class="copy-btn" id="copy-btn">COPY RESULT</button>
+            <p id="conv-rate" class="text-center text-xs text-gray-400 mb-3">1 kg = 2.2046 lbs</p>
+            <button id="copy-btn" class="w-full py-2.5 border-2 border-gray-200 rounded-xl text-sm font-semibold text-brand-500 hover:bg-brand-50 hover:border-brand-400 transition-colors">COPY RESULT <span class="text-gray-400 font-normal">( or press arrow key )</span></button>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="wrap">
-    <div class="tabs-wrap" style="margin-top:1.5rem;">
-      <button class="tab-btn active" data-tab="kg-lbs">kg to lbs</button>
-      <button class="tab-btn" data-tab="lbs-kg">lbs to kg</button>
-      <button class="tab-btn" data-tab="kg-stones">kg to stones</button>
-      <button class="tab-btn" data-tab="grams-oz">grams to oz</button>
-    </div>
-
-    <!-- Quick Conversions -->
-    <div class="sc tab-panel show" id="panel-kg-lbs">
-      <h2>Quick KG to LBS Conversions</h2>
-      <div class="quick">
-        {quickKgLbs.map(q => <a href={`/${q.kg}-kg-to-lbs`}><span class="kg">{q.kg} kg</span><span class="lbs">{q.lbs} lbs</span></a>)}
-      </div>
-    </div>
-    <div class="sc tab-panel" id="panel-lbs-kg">
-      <h2>Quick LBS to KG Conversions</h2>
-      <div class="quick">
-        {quickLbsKg.map(q => <a href="#"><span class="kg">{q.lbs} lbs</span><span class="lbs">{q.kg} kg</span></a>)}
-      </div>
-    </div>
-    <div class="sc tab-panel" id="panel-kg-stones">
-      <h2>Quick KG to Stones Conversions</h2>
-      <div class="quick">
-        {[50,55,60,65,70,75,80,85,90,95,100,120].map(kg => <a href="#"><span class="kg">{kg} kg</span><span class="lbs">{(kg * 0.157473).toFixed(2)} st</span></a>)}
-      </div>
-    </div>
-    <div class="sc tab-panel" id="panel-grams-oz">
-      <h2>Quick Grams to Ounces</h2>
-      <div class="quick">
-        {quickGramsOz.map(q => <a href="#"><span class="kg">{q.g} g</span><span class="lbs">{q.oz} oz</span></a>)}
+  <!-- Tabs content: Quick Conversions -->
+  <div class="max-w-5xl mx-auto px-4 py-6">
+    <!-- kg-lbs panel -->
+    <div class="tab-panel" id="panel-kg-lbs">
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 sm:p-6 mb-5">
+        <h2 class="text-lg font-bold text-gray-800 mb-4">Quick KG to LBS Conversions</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+          {quickKgLbs.map(kg => <a href={`/${kg}-kg-to-lbs`} class="flex justify-between items-center bg-gray-50 hover:bg-gray-100 rounded-lg px-3 py-2 text-sm transition-colors no-underline text-gray-700"><span class="font-semibold">{kg} kg</span><span class="text-gray-500">{(kg * 2.20462262185).toFixed(2)} lbs</span></a>)}
+        </div>
       </div>
     </div>
 
-    <!-- Content -->
-    <div class="sc">
-      <h2>How to Convert KG to LBS</h2>
-      <p>Multiply kilograms by <strong>2.20462262185</strong> to get pounds.</p>
-      <div class="formula">Pounds (lbs) = Kilograms (kg) × 2.20462262185</div>
-      <p><strong>Example:</strong> 75 kg × 2.2046 = {(75 * 2.20462262185).toFixed(2)} lbs</p>
-      <p style="margin-top:0.75rem;">More examples on our <a href="/how-to-convert-kg-to-lbs" style="color:var(--teal);">complete how-to guide</a>.</p>
+    <!-- lbs-kg panel -->
+    <div class="tab-panel hidden" id="panel-lbs-kg">
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 sm:p-6 mb-5">
+        <h2 class="text-lg font-bold text-gray-800 mb-4">Quick LBS to KG Conversions</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+          {quickLbsKg.map(lbs => <a href="#" class="flex justify-between items-center bg-gray-50 hover:bg-gray-100 rounded-lg px-3 py-2 text-sm transition-colors no-underline text-gray-700"><span class="font-semibold">{lbs} lbs</span><span class="text-gray-500">{(lbs * 0.45359237).toFixed(2)} kg</span></a>)}
+        </div>
+      </div>
     </div>
 
-    <div class="sc">
-      <h2>Full KG to LBS Conversion Table (1–100)</h2>
-      <div class="sticky-table">
-        <table>
-          <thead><tr><th>Kilograms (kg)</th><th>Pounds (lbs)</th></tr></thead>
+    <!-- kg-stones panel -->
+    <div class="tab-panel hidden" id="panel-kg-stones">
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 sm:p-6 mb-5">
+        <h2 class="text-lg font-bold text-gray-800 mb-4">Quick KG to Stones Conversions</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+          {stonesKg.map(kg => <a href="#" class="flex justify-between items-center bg-gray-50 hover:bg-gray-100 rounded-lg px-3 py-2 text-sm transition-colors no-underline text-gray-700"><span class="font-semibold">{kg} kg</span><span class="text-gray-500">{(kg * 0.157473).toFixed(2)} st</span></a>)}
+        </div>
+      </div>
+    </div>
+
+    <!-- grams-oz panel -->
+    <div class="tab-panel hidden" id="panel-grams-oz">
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 sm:p-6 mb-5">
+        <h2 class="text-lg font-bold text-gray-800 mb-4">Quick Grams to Ounces Conversions</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+          {quickGramsOz.map(g => <a href="#" class="flex justify-between items-center bg-gray-50 hover:bg-gray-100 rounded-lg px-3 py-2 text-sm transition-colors no-underline text-gray-700"><span class="font-semibold">{g} g</span><span class="text-gray-500">{(g * 0.03527396195).toFixed(2)} oz</span></a>)}
+        </div>
+      </div>
+    </div>
+
+    <!-- How to -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 sm:p-6 mb-5">
+      <h2 class="text-lg font-bold text-gray-800 mb-3">How to Convert KG to LBS</h2>
+      <p class="text-gray-600 mb-3">Multiply kilograms by <strong>2.20462262185</strong> to get pounds.</p>
+      <div class="bg-brand-50 border border-brand-100 rounded-lg px-4 py-3 text-center font-semibold text-brand-800 text-sm sm:text-base mb-3">
+        Pounds (lbs) = Kilograms (kg) × 2.20462262185
+      </div>
+      <p class="text-gray-600">Example: <strong>75 kg</strong> × 2.2046 = <strong>{(75 * 2.20462262185).toFixed(2)} lbs</strong></p>
+      <p class="mt-2"><a href="/how-to-convert-kg-to-lbs" class="text-brand-500 hover:underline text-sm font-medium">More examples &rarr;</a></p>
+    </div>
+
+    <!-- Full table -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 sm:p-6 mb-5">
+      <h2 class="text-lg font-bold text-gray-800 mb-3">Full KG to LBS Table (1–100)</h2>
+      <div class="max-h-96 overflow-y-auto rounded-lg border border-gray-100">
+        <table class="w-full text-sm">
+          <thead class="sticky top-0 z-10">
+            <tr class="bg-brand-500 text-white"><th class="px-3 py-2 font-semibold text-left">Kilograms</th><th class="px-3 py-2 font-semibold text-right">Pounds</th></tr>
+          </thead>
           <tbody>
             {Array.from({length: 100}, (_, i) => i + 1).map(kg => (
-              <tr><td><strong>{kg} kg</strong></td><td>{(kg * 2.20462262185).toFixed(4)} lbs</td></tr>
+              <tr class="border-b border-gray-50 even:bg-gray-50/50 hover:bg-gray-100 transition-colors">
+                <td class="px-3 py-1.5 font-semibold">{kg} kg</td>
+                <td class="px-3 py-1.5 text-right text-gray-600">{(kg * 2.20462262185).toFixed(4)} lbs</td>
+              </tr>
             ))}
           </tbody>
         </table>
       </div>
     </div>
 
-    <div class="sc">
-      <h2>FAQ</h2>
-      <div class="faq-q"><h3>How many pounds in a kilogram?</h3><p>1 kg = 2.2046 lbs.</p></div>
-      <div class="faq-q"><h3>How to convert kg to lbs?</h3><p>Multiply kg by 2.2046. Example: 50 kg = 110.23 lbs.</p></div>
-      <div class="faq-q"><h3>Why 2.2046?</h3><p>The pound is defined as 0.45359237 kg. So 1/0.45359237 = 2.20462262185.</p></div>
-      <div class="faq-q"><h3>Free to use?</h3><p>Yes, no sign-up, no limits.</p></div>
+    <!-- FAQ -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 sm:p-6">
+      <h2 class="text-lg font-bold text-gray-800 mb-4">FAQ</h2>
+      <div class="space-y-4">
+        <div class="pb-4 border-b border-gray-100"><h3 class="font-semibold text-brand-600 mb-1">How many pounds in a kilogram?</h3><p class="text-gray-600 text-sm">1 kg = 2.2046 lbs. This is the international standard conversion rate.</p></div>
+        <div class="pb-4 border-b border-gray-100"><h3 class="font-semibold text-brand-600 mb-1">How do I convert kg to lbs?</h3><p class="text-gray-600 text-sm">Multiply kilograms by 2.2046. Example: 50 kg × 2.2046 = 110.23 lbs.</p></div>
+        <div class="pb-4 border-b border-gray-100"><h3 class="font-semibold text-brand-600 mb-1">Why 2.2046?</h3><p class="text-gray-600 text-sm">The pound is legally defined as 0.45359237 kg. So 1 / 0.45359237 = 2.20462262185.</p></div>
+        <div><h3 class="font-semibold text-brand-600 mb-1">Is this free?</h3><p class="text-gray-600 text-sm">Yes, 100% free. No sign-up required.</p></div>
+      </div>
     </div>
   </div>
 </BaseLayout>
 
 <script>
-  const CONVERSIONS: Record<string, { labelA: string; labelB: string; unitA: string; unitB: string; rate: string; fnAtoB: (v: number) => number; fnBtoA: (v: number) => number }> = {
-    'kg-lbs': {
-      labelA: 'Kilograms', labelB: 'Pounds', unitA: 'kg', unitB: 'lbs',
-      rate: '1 kg = 2.2046 lbs',
-      fnAtoB: v => v * 2.20462262185,
-      fnBtoA: v => v / 2.20462262185,
-    },
-    'lbs-kg': {
-      labelA: 'Pounds', labelB: 'Kilograms', unitA: 'lbs', unitB: 'kg',
-      rate: '1 lb = 0.4536 kg',
-      fnAtoB: v => v * 0.45359237,
-      fnBtoA: v => v / 0.45359237,
-    },
-    'kg-stones': {
-      labelA: 'Kilograms', labelB: 'Stones', unitA: 'kg', unitB: 'st',
-      rate: '1 kg = 0.1575 stones',
-      fnAtoB: v => v * 0.157473,
-      fnBtoA: v => v / 0.157473,
-    },
-    'grams-oz': {
-      labelA: 'Grams', labelB: 'Ounces', unitA: 'g', unitB: 'oz',
-      rate: '1 g = 0.0353 oz',
-      fnAtoB: v => v * 0.03527396195,
-      fnBtoA: v => v / 0.03527396195,
-    },
+  const CONVERSIONS: Record<string, { labelA: string; labelB: string; unitA: string; unitB: string; rate: string; aToB: (v: number) => number; bToA: (v: number) => number }> = {
+    'kg-lbs': { labelA: 'Kilograms', labelB: 'Pounds', unitA: 'kg', unitB: 'lbs', rate: '1 kg = 2.2046 lbs', aToB: v => v * 2.20462262185, bToA: v => v / 2.20462262185 },
+    'lbs-kg': { labelA: 'Pounds', labelB: 'Kilograms', unitA: 'lbs', unitB: 'kg', rate: '1 lb = 0.4536 kg', aToB: v => v * 0.45359237, bToA: v => v / 0.45359237 },
+    'kg-stones': { labelA: 'Kilograms', labelB: 'Stones', unitA: 'kg', unitB: 'st', rate: '1 kg = 0.1575 st', aToB: v => v * 0.157473, bToA: v => v / 0.157473 },
+    'grams-oz': { labelA: 'Grams', labelB: 'Ounces', unitA: 'g', unitB: 'oz', rate: '1 g = 0.0353 oz', aToB: v => v * 0.03527396195, bToA: v => v / 0.03527396195 },
   };
 
-  let currentTab = 'kg-lbs';
-
+  let current = 'kg-lbs';
   const inpA = document.getElementById('conv-a') as HTMLInputElement;
   const inpB = document.getElementById('conv-b') as HTMLInputElement;
-  const swapBtn = document.getElementById('swap-btn') as HTMLButtonElement;
-  const copyBtn = document.getElementById('copy-btn') as HTMLButtonElement;
-  const rateEl = document.getElementById('conv-rate') as HTMLElement;
-  const labelA = inpA.previousElementSibling as HTMLLabelElement;
+  const rateEl = document.getElementById('conv-rate')!;
+  const copyBtn = document.getElementById('copy-btn')!;
+  const labelA = document.querySelector<HTMLLabelElement>('[for="conv-a"]')!;
   const labelB = document.querySelector<HTMLLabelElement>('[for="conv-b"]')!;
-  const unitAEl = inpA.nextElementSibling as HTMLElement;
-  const unitBEl = inpB.nextElementSibling as HTMLElement;
-  const tabs = document.querySelectorAll<HTMLButtonElement>('.tab-btn');
-  const panels = document.querySelectorAll<HTMLElement>('.tab-panel');
+  const unitAEl = document.querySelector<HTMLElement>('.kg-unit')!;
+  const unitBEl = document.querySelector<HTMLElement>('.lbs-unit')!;
 
-  function setTab(tabId: string) {
-    currentTab = tabId;
-    const c = CONVERSIONS[tabId];
+  function switchTab(tab: string) {
+    current = tab;
+    const c = CONVERSIONS[tab];
     labelA.textContent = c.labelA;
     labelB.textContent = c.labelB;
     unitAEl.textContent = c.unitA;
     unitBEl.textContent = c.unitB;
     rateEl.textContent = c.rate;
     inpA.value = ''; inpB.value = '';
-
-    tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === tabId));
-    panels.forEach(p => p.classList.toggle('show', p.id === `panel-${tabId}`));
-
-    window.location.hash = tabId;
+    document.querySelectorAll('.tab-btn').forEach(b => {
+      b.classList.toggle('bg-brand-500', b.getAttribute('data-tab') === tab);
+      b.classList.toggle('text-white', b.getAttribute('data-tab') === tab);
+      b.classList.toggle('text-gray-500', b.getAttribute('data-tab') !== tab);
+    });
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('hidden', p.id !== `panel-${tab}`));
+    window.location.hash = tab;
   }
 
-  function update() {
-    const c = CONVERSIONS[currentTab];
-    const val = parseFloat(inpA.value);
-    if (isNaN(val)) { inpB.value = ''; return; }
-    inpB.value = c.fnAtoB(val).toFixed(5);
-  }
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    b.addEventListener('click', () => switchTab(b.getAttribute('data-tab')!));
+  });
 
-  function updateReverse() {
-    const c = CONVERSIONS[currentTab];
-    const val = parseFloat(inpB.value);
-    if (isNaN(val)) { inpA.value = ''; return; }
-    inpA.value = c.fnBtoA(val).toFixed(5);
-  }
+  inpA.addEventListener('input', () => { const v = parseFloat(inpA.value); inpB.value = isNaN(v) ? '' : CONVERSIONS[current].aToB(v).toFixed(5); });
+  inpB.addEventListener('input', () => { const v = parseFloat(inpB.value); inpA.value = isNaN(v) ? '' : CONVERSIONS[current].bToA(v).toFixed(5); });
 
-  inpA.addEventListener('input', update);
-  inpB.addEventListener('input', updateReverse);
-
-  swapBtn.addEventListener('click', () => {
-    const temp = inpA.value; inpA.value = inpB.value; inpB.value = temp;
-    if (inpA.value) update(); else if (inpB.value) updateReverse();
+  document.getElementById('swap-btn')!.addEventListener('click', () => {
+    [inpA.value, inpB.value] = [inpB.value, inpA.value];
+    if (inpA.value) { const v = parseFloat(inpA.value); inpB.value = CONVERSIONS[current].aToB(v).toFixed(5); }
+    else if (inpB.value) { const v = parseFloat(inpB.value); inpA.value = CONVERSIONS[current].bToA(v).toFixed(5); }
   });
 
   copyBtn.addEventListener('click', async () => {
     const val = inpB.value || inpA.value;
     if (!val) return;
-    try {
-      await navigator.clipboard.writeText(val);
-      copyBtn.textContent = 'COPIED!';
-      setTimeout(() => { copyBtn.textContent = 'COPY RESULT'; }, 1500);
-    } catch {
-      inpB.select();
-      document.execCommand('copy');
-      copyBtn.textContent = 'COPIED!';
-      setTimeout(() => { copyBtn.textContent = 'COPY RESULT'; }, 1500);
-    }
+    try { await navigator.clipboard.writeText(val); } catch { inpB.select(); document.execCommand('copy'); }
+    copyBtn.innerHTML = 'COPIED!';
+    setTimeout(() => { copyBtn.innerHTML = 'COPY RESULT <span class="text-gray-400 font-normal">( or press arrow key )</span>'; }, 1500);
   });
 
-  tabs.forEach(t => t.addEventListener('click', () => setTab(t.dataset.tab!)));
-
-  // Restore from hash
   const hash = window.location.hash.replace('#', '');
-  if (hash && CONVERSIONS[hash]) setTab(hash);
+  if (hash && CONVERSIONS[hash]) switchTab(hash);
 </script>

@@ -3,19 +3,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const kg = 5; const lbs = (kg * 2.20462262185).toFixed(4);
 ---
 
-<BaseLayout title={`${kg} KG to LBS — ${kg} kg = ${lbs} lbs`} description={`${kg} kilograms equals ${lbs} pounds. Free converter with real-world examples.`} canonical="https://kgtolbs.cc/5-kg-to-lbs">
-  <section class="hero">
-    <div class="wrap">
-      <h1 style="font-size:2.2rem;font-weight:800;color:#1a202c;margin-bottom:0.3rem;">{kg} KG to LBS</h1>
-      <p style="font-size:1.1rem;color:var(--text-light);">{kg} kilograms = <strong>{lbs}</strong> pounds</p>
+<BaseLayout title={`${kg} KG to LBS — ${kg} kg = ${lbs} lbs`} description={`${kg} kilograms equals ${lbs} pounds. Free converter with real-world examples.`} canonical={`https://kgtolbs.cc/${kg}-kg-to-lbs`}>
+  <section class="bg-white border-b border-gray-100">
+    <div class="max-w-5xl mx-auto px-4 py-12">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-2">{kg} KG to LBS</h1>
+      <p class="text-lg text-gray-500">{kg} kilograms = <strong class="text-gray-800">{lbs}</strong> pounds</p>
     </div>
   </section>
-  <div class="wrap" style="padding-top:1.5rem;">
-    <div class="sc">
-      <h2>{kg} Kilograms to Pounds Breakdown</h2>
-      <div class="formula">{kg} kg × 2.20462262185 = <strong>{lbs} lbs</strong></div>
-      <p><strong>{kg} kg</strong> is roughly the weight of a house cat or a large bag of flour.</p>
-      <div class="links-row"><a href="/">Home</a> &middot; <a href="/1-kg-to-lbs">1 kg to lbs</a> &middot; <a href="/10-kg-to-lbs">10 kg to lbs</a></div>
+  <div class="max-w-3xl mx-auto px-4 py-8">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">{kg} Kilograms to Pounds — Full Breakdown</h2>
+      <div class="bg-brand-50 border border-brand-100 rounded-lg px-4 py-3 text-center font-semibold text-brand-800 mb-4">
+        {kg} kg × 2.20462262185 = <strong>{lbs} lbs</strong>
+      </div>
+      <p class="text-gray-600"><strong>{kg} kg</strong> is roughly the weight of a house cat or a large bag of flour.</p>
+      <div class="flex gap-4 mt-6 text-sm font-medium">
+        <a href="/" class="text-brand-500 hover:underline">Home</a>
+        <a href="/1-kg-to-lbs" class="text-brand-500 hover:underline">1 kg to lbs</a>
+        <a href="/10-kg-to-lbs" class="text-brand-500 hover:underline">10 kg to lbs</a>
+      </div>
     </div>
   </div>
 </BaseLayout>

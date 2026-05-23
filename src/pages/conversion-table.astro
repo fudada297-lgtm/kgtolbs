@@ -2,26 +2,31 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="KG to LBS Conversion Table — 1 to 100 Chart" description="Complete kilograms to pounds conversion chart from 1 to 100 kg. Free reference table." canonical="https://kgtolbs.cc/conversion-table">
-  <section class="hero">
-    <div class="wrap">
-      <h1 style="font-size:2.2rem;font-weight:800;color:#1a202c;margin-bottom:0.3rem;">KG to LBS Conversion Table</h1>
-      <p style="font-size:1.1rem;color:var(--text-light);">1–100 kilograms to pounds quick reference</p>
+<BaseLayout title="KG to LBS Conversion Table — Full 1-100 Chart" description="Complete kg to lbs conversion table from 1 to 100 kilograms. Free reference chart." canonical="https://kgtolbs.cc/conversion-table">
+  <section class="bg-white border-b border-gray-100">
+    <div class="max-w-5xl mx-auto px-4 py-12">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-2">KG to LBS Conversion Table</h1>
+      <p class="text-lg text-gray-500">1–100 kilograms to pounds quick reference chart</p>
     </div>
   </section>
-  <div class="wrap" style="padding-top:1.5rem;">
-    <div class="sc">
-      <div class="sticky-table">
-        <table>
-          <thead><tr><th>Kilograms (kg)</th><th>Pounds (lbs)</th></tr></thead>
+  <div class="max-w-3xl mx-auto px-4 py-8">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+      <div class="max-h-96 overflow-y-auto rounded-lg border border-gray-100">
+        <table class="w-full text-sm">
+          <thead class="sticky top-0 z-10">
+            <tr class="bg-brand-500 text-white"><th class="px-4 py-2 font-semibold text-left">Kilograms</th><th class="px-4 py-2 font-semibold text-right">Pounds</th></tr>
+          </thead>
           <tbody>
             {Array.from({length: 100}, (_, i) => i + 1).map(kg => (
-              <tr><td><strong>{kg} kg</strong></td><td>{(kg * 2.20462262185).toFixed(4)} lbs</td></tr>
+              <tr class="border-b border-gray-50 even:bg-gray-50/50">
+                <td class="px-4 py-1.5 font-semibold">{kg} kg</td>
+                <td class="px-4 py-1.5 text-right text-gray-600">{(kg * 2.20462262185).toFixed(4)} lbs</td>
+              </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <p style="margin-top:1rem;">Need a custom value? Use the <a href="/" style="color:var(--teal);">interactive converter</a>.</p>
+      <p class="mt-4 text-gray-600 text-sm">Need a custom value? Use the <a href="/" class="text-brand-500 hover:underline font-medium">interactive converter</a>.</p>
     </div>
   </div>
 </BaseLayout>
