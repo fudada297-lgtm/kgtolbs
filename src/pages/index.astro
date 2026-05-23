@@ -4,56 +4,60 @@ import Converter from '../components/Converter.astro';
 import FAQ from '../components/FAQ.astro';
 
 const title = 'KG to LBS Converter - Free Online Kilograms to Pounds Calculator';
-const description = 'Free online KG to LBS converter. Convert kilograms to pounds instantly with our easy-to-use calculator. Includes kg to lbs conversion table, formula, and FAQ.';
+const description = 'Free online KG to LBS converter. Convert kilograms to pounds instantly. Includes conversion table, formula, and FAQ. Fast, accurate, no sign-up required.';
 ---
 
 <BaseLayout title={title} description={description}>
-  <div class="container">
+  <script type="application/ld+json" set:html={`{
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "KG to LBS Converter",
+    "url": "https://kgtolbs.cc",
+    "description": "${description}",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }`} />
 
-    <!-- Schema.org structured data -->
-    <script type="application/ld+json" set:html={`{
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "KG to LBS Converter",
-      "url": "https://kgtolbs.cc",
-      "description": "${description}",
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "All",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-    }`} />
-
-    <Converter />
-
-    <div class="content-section">
-      <h2>How to Convert KG to LBS</h2>
-      <p>Converting kilograms to pounds is simple. Use the <span class="highlight">multiply by 2.2046</span> formula to get accurate results every time.</p>
-
-      <div class="formula">
-        <strong>Formula:</strong> Pounds (lbs) = Kilograms (kg) × <strong>2.20462262185</strong>
-      </div>
-
-      <h3>Step-by-Step Example</h3>
-      <ol>
-        <li>Take your weight in kilograms (e.g., <strong>75 kg</strong>)</li>
-        <li>Multiply by 2.20462262185</li>
-        <li>Result: <strong>75 kg = { (75 * 2.20462262185).toFixed(2) } lbs</strong></li>
-      </ol>
-
-      <h3>Common KG to LBS Conversions</h3>
-      <ul>
-        <li><strong>1 kg</strong> = 2.2046 lbs</li>
-        <li><strong>5 kg</strong> = 11.0231 lbs</li>
-        <li><strong>10 kg</strong> = 22.0462 lbs</li>
-        <li><strong>20 kg</strong> = 44.0925 lbs</li>
-        <li><strong>50 kg</strong> = 110.2311 lbs</li>
-        <li><strong>100 kg</strong> = 220.4623 lbs</li>
-      </ul>
-    </div>
-
-    <div class="ad-placeholder">
-      <p>Advertisement</p>
-    </div>
-
-    <FAQ />
+  <div class="hero">
+    <h1>KG to LBS Converter</h1>
+    <p>Free, fast, and accurate kilograms to pounds conversion. No sign-up needed.</p>
   </div>
+
+  <Converter />
+
+  <div class="card">
+    <h2>How to Convert KG to LBS</h2>
+    <p>Converting kilograms to pounds is simple. Multiply your kg value by <span class="highlight">2.2046</span> to get the exact result in pounds.</p>
+
+    <div class="formula-box">
+      <strong>Pounds (lbs) = Kilograms (kg) × 2.20462262185</strong>
+    </div>
+
+    <h3>Quick Example</h3>
+    <ol>
+      <li>Take your weight in kilograms — for example, <strong>75 kg</strong></li>
+      <li>Multiply by 2.20462262185</li>
+      <li>Result: <strong>75 kg = {(75 * 2.20462262185).toFixed(2)} lbs</strong></li>
+    </ol>
+
+    <h3>Common Conversions at a Glance</h3>
+    <table>
+      <thead>
+        <tr><th>Kilograms (kg)</th><th>Pounds (lbs)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>1 kg</strong></td><td>2.2046 lbs</td></tr>
+        <tr><td><strong>5 kg</strong></td><td>11.0231 lbs</td></tr>
+        <tr><td><strong>10 kg</strong></td><td>22.0462 lbs</td></tr>
+        <tr><td><strong>20 kg</strong></td><td>44.0925 lbs</td></tr>
+        <tr><td><strong>50 kg</strong></td><td>110.2311 lbs</td></tr>
+        <tr><td><strong>100 kg</strong></td><td>220.4623 lbs</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="ad-spot">Advertisement</div>
+
+  <FAQ />
 </BaseLayout>

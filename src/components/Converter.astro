@@ -5,23 +5,22 @@ const kgValue = String(initialKg);
 const lbsValue = String(initialLbs);
 ---
 
-<div class="converter-card">
-  <h1>KG to LBS Converter</h1>
-  <p class="subtitle">Convert kilograms to pounds instantly. Free, accurate, and easy to use.</p>
+<div class="card" style="margin-top: -1rem;">
+  <h2 style="font-size:1.5rem;margin-bottom:1.5rem;text-align:center;">↔ Convert Kilograms to Pounds</h2>
 
   <div class="converter-grid">
-    <div class="converter-input">
+    <div class="input-group">
       <label for="kg-input">Kilograms (kg)</label>
-      <input type="number" id="kg-input" placeholder="Enter kg" value={kgValue} min="0" step="any">
-      <p class="converter-system">Metric System</p>
+      <input type="number" id="kg-input" placeholder="e.g. 75" value={kgValue} min="0" step="any">
+      <p class="input-system">Metric System</p>
     </div>
 
-    <div class="equals">=</div>
+    <div class="equals-symbol">=</div>
 
-    <div class="converter-input">
+    <div class="input-group">
       <label for="lbs-input">Pounds (lbs)</label>
-      <input type="number" id="lbs-input" placeholder="Enter lbs" value={lbsValue} min="0" step="any">
-      <p class="converter-system">Imperial System</p>
+      <input type="number" id="lbs-input" placeholder="e.g. 165" value={lbsValue} min="0" step="any">
+      <p class="input-system">Imperial System</p>
     </div>
   </div>
 </div>
@@ -30,17 +29,13 @@ const lbsValue = String(initialLbs);
   const kgInput = document.getElementById('kg-input') as HTMLInputElement;
   const lbsInput = document.getElementById('lbs-input') as HTMLInputElement;
 
-  let activeInput: 'kg' | 'lbs' | null = null;
-
   kgInput.addEventListener('input', () => {
-    activeInput = 'kg';
     const kg = parseFloat(kgInput.value);
     if (isNaN(kg)) { lbsInput.value = ''; return; }
     lbsInput.value = (kg * 2.20462262185).toFixed(4);
   });
 
   lbsInput.addEventListener('input', () => {
-    activeInput = 'lbs';
     const lbs = parseFloat(lbsInput.value);
     if (isNaN(lbs)) { kgInput.value = ''; return; }
     kgInput.value = (lbs / 2.20462262185).toFixed(4);

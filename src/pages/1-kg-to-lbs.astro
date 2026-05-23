@@ -5,7 +5,7 @@ import Converter from '../components/Converter.astro';
 const kg = 1;
 const lbs = (kg * 2.20462262185).toFixed(4);
 const title = `1 KG to LBS - Convert ${kg} Kilogram to Pounds`;
-const description = `Convert ${kg} kg to lbs instantly. ${kg} kilogram equals ${lbs} pounds. Free online converter with detailed explanation.`;
+const description = `Convert ${kg} kg to lbs instantly. ${kg} kilogram equals ${lbs} pounds. Free online converter with step-by-step calculation.`;
 ---
 
 <BaseLayout title={title} description={description} canonical="https://kgtolbs.cc/1-kg-to-lbs">
@@ -17,29 +17,32 @@ const description = `Convert ${kg} kg to lbs instantly. ${kg} kilogram equals ${
     "description": "${description}"
   }`} />
 
-  <div class="container">
-    <Converter initialKg={String(kg)} initialLbs={lbs} />
+  <div class="hero">
+    <h1>{kg} KG to LBS</h1>
+    <p>{kg} kilogram = {lbs} pounds</p>
+  </div>
 
-    <div class="content-section">
-      <h2>{kg} Kilogram to Pounds Conversion</h2>
-      <p><strong>{kg} kilogram (kg)</strong> is equal to exactly <strong>{lbs} pounds (lbs)</strong>.</p>
+  <Converter initialKg={String(kg)} initialLbs={lbs} />
 
-      <div class="formula">
-        {kg} kg × 2.20462262185 = <strong>{lbs} lbs</strong>
-      </div>
+  <div class="card">
+    <h2>{kg} Kilogram to Pounds — Complete Breakdown</h2>
+    <p><strong>{kg} kilogram (kg)</strong> equals exactly <strong>{lbs} pounds (lbs)</strong>.</p>
 
-      <h3>Conversion Breakdown</h3>
-      <ul>
-        <li>1 kilogram = 2.20462262185 pounds</li>
-        <li>{kg} × 2.20462262185 = {lbs} pounds</li>
-        <li>Rounded to 2 decimal places: <strong>{kg} kg = {parseFloat(lbs).toFixed(2)} lbs</strong></li>
-      </ul>
+    <div class="formula-box">
+      {kg} kg × 2.20462262185 = <strong>{lbs} lbs</strong>
+    </div>
 
-      <p style="margin-top: 1.5rem;">
-        <a href="/">Back to KG to LBS Converter</a> &middot;
-        <a href="/5-kg-to-lbs">5 kg to lbs</a> &middot;
-        <a href="/10-kg-to-lbs">10 kg to lbs</a>
-      </p>
+    <h3>Quick Facts</h3>
+    <ul>
+      <li>1 kilogram is defined as the mass of 1 liter of water</li>
+      <li>1 pound is defined as exactly 0.45359237 kilograms</li>
+      <li>Therefore, 1 kg = 1 / 0.45359237 = 2.20462262185 lbs</li>
+    </ul>
+
+    <div class="inline-links">
+      <a href="/">Home</a> &middot;
+      <a href="/5-kg-to-lbs">5 kg to lbs</a> &middot;
+      <a href="/10-kg-to-lbs">10 kg to lbs</a>
     </div>
   </div>
 </BaseLayout>

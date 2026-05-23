@@ -5,7 +5,7 @@ import Converter from '../components/Converter.astro';
 const kg = 5;
 const lbs = (kg * 2.20462262185).toFixed(4);
 const title = `5 KG to LBS - Convert ${kg} Kilograms to Pounds`;
-const description = `Convert ${kg} kg to lbs instantly. ${kg} kilograms equals ${lbs} pounds. Free online converter with detailed explanation.`;
+const description = `Convert ${kg} kg to lbs instantly. ${kg} kilograms equals ${lbs} pounds. Free online converter with real-world examples.`;
 ---
 
 <BaseLayout title={title} description={description} canonical="https://kgtolbs.cc/5-kg-to-lbs">
@@ -16,25 +16,28 @@ const description = `Convert ${kg} kg to lbs instantly. ${kg} kilograms equals $
     "url": "https://kgtolbs.cc/5-kg-to-lbs"
   }`} />
 
-  <div class="container">
-    <Converter initialKg={String(kg)} initialLbs={lbs} />
+  <div class="hero">
+    <h1>{kg} KG to LBS</h1>
+    <p>{kg} kilograms = {lbs} pounds</p>
+  </div>
 
-    <div class="content-section">
-      <h2>{kg} Kilograms to Pounds Conversion</h2>
-      <p><strong>{kg} kilograms (kg)</strong> is equal to exactly <strong>{lbs} pounds (lbs)</strong>.</p>
+  <Converter initialKg={String(kg)} initialLbs={lbs} />
 
-      <div class="formula">
-        {kg} kg × 2.20462262185 = <strong>{lbs} lbs</strong>
-      </div>
+  <div class="card">
+    <h2>{kg} Kilograms to Pounds — Complete Breakdown</h2>
+    <p><strong>{kg} kilograms (kg)</strong> equals exactly <strong>{lbs} pounds (lbs)</strong>.</p>
 
-      <h3>Real-World Example</h3>
-      <p>An average newborn baby weighs about 3.5 kg. {kg} kg is roughly the weight of a small cat or a large bag of flour.</p>
+    <div class="formula-box">
+      {kg} kg × 2.20462262185 = <strong>{lbs} lbs</strong>
+    </div>
 
-      <p style="margin-top: 1.5rem;">
-        <a href="/">Back to KG to LBS Converter</a> &middot;
-        <a href="/1-kg-to-lbs">1 kg to lbs</a> &middot;
-        <a href="/10-kg-to-lbs">10 kg to lbs</a>
-      </p>
+    <h3>Real-World Reference</h3>
+    <p>A typical house cat or a large bag of flour weighs about <strong>{kg} kg ({lbs} lbs)</strong>. In fitness, a {kg} kg dumbbell is a common starting weight for beginners.</p>
+
+    <div class="inline-links">
+      <a href="/">Home</a> &middot;
+      <a href="/1-kg-to-lbs">1 kg to lbs</a> &middot;
+      <a href="/10-kg-to-lbs">10 kg to lbs</a>
     </div>
   </div>
 </BaseLayout>
