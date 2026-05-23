@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ConversionTable from '../components/ConversionTable.astro';
+
+const title = 'KG to LBS Conversion Table - 1-100 Kilograms to Pounds';
+const description = 'Complete kg to lbs conversion table from 1 to 100 kilograms. Quick reference chart for kilograms to pounds conversions.';
+---
+
+<BaseLayout title={title} description={description} canonical="https://kgtolbs.cc/conversion-table">
+  <script type="application/ld+json" set:html={`{
+    "@context": "https://schema.org",
+    "@type": "Table",
+    "about": "Kilograms to Pounds conversion chart"
+  }`} />
+
+  <div class="container">
+    <div class="content-section">
+      <h1>KG to LBS Conversion Table</h1>
+      <p>Complete conversion chart from 1 to 100 kilograms to pounds. Find your kg value and see the equivalent in lbs instantly.</p>
+    </div>
+
+    <ConversionTable start={1} end={100} step={1} title="1-100 KG to LBS Chart" showAll={true} />
+
+    <div class="content-section">
+      <h2>How to Use This Conversion Table</h2>
+      <p>Find the kilograms value in the left column, then read the corresponding pounds value in the right column. All conversions use the standard factor: 1 kg = 2.20462262185 lbs.</p>
+      <p>Need a more precise conversion? Use our <a href="/">KG to LBS Calculator</a> for any decimal value.</p>
+    </div>
+  </div>
+</BaseLayout>

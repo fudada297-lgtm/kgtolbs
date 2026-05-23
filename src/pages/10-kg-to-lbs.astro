@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Converter from '../components/Converter.astro';
+
+const kg = 10;
+const lbs = (kg * 2.20462262185).toFixed(4);
+const title = `10 KG to LBS - Convert ${kg} Kilograms to Pounds`;
+const description = `Convert ${kg} kg to lbs instantly. ${kg} kilograms equals ${lbs} pounds. Free online converter with detailed explanation.`;
+---
+
+<BaseLayout title={title} description={description} canonical="https://kgtolbs.cc/10-kg-to-lbs">
+  <script type="application/ld+json" set:html={`{
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "10 KG to LBS Converter",
+    "url": "https://kgtolbs.cc/10-kg-to-lbs"
+  }`} />
+
+  <div class="container">
+    <Converter initialKg={String(kg)} initialLbs={lbs} />
+
+    <div class="content-section">
+      <h2>{kg} Kilograms to Pounds Conversion</h2>
+      <p><strong>{kg} kilograms (kg)</strong> is equal to exactly <strong>{lbs} pounds (lbs)</strong>.</p>
+
+      <div class="formula">
+        {kg} kg × 2.20462262185 = <strong>{lbs} lbs</strong>
+      </div>
+
+      <h3>Real-World Example</h3>
+      <p>{kg} kg is a common weight used in fitness and shipping. For context, a standard gym dumbbell, a medium-sized suitcase, or a large watermelon typically weighs around {kg} kg.</p>
+
+      <p style="margin-top: 1.5rem;">
+        <a href="/">Back to KG to LBS Converter</a> &middot;
+        <a href="/1-kg-to-lbs">1 kg to lbs</a> &middot;
+        <a href="/5-kg-to-lbs">5 kg to lbs</a>
+      </p>
+    </div>
+  </div>
+</BaseLayout>
