@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kgtolbs.cc/sitemap.xml
+Sitemap: https://kgtolbs.cc/sitemap-index.xml
