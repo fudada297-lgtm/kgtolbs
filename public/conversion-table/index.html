@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KG to LBS Conversion Table (1-100 kg) | kgtolbs.cc</title>
+  <meta name="description" content="Free KG to LBS conversion table. Quick lookup: 1 kg to lbs, 10 kg to lbs, 50 kg to lbs, 100 kg to lbs. Printable kilogram to pound chart." />
+  <meta name="google-site-verification" content="cB6nM9Q9dNsQaj5ThyGvflKxZB0u_td0Ye2vhpqL3qM" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5040682133048728" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://kgtolbs.cc/conversion-table" />
+  <style>
+    :root {
+      --text: #2b2d42; --bg: #f8f9fa; --brand: #319795; --card-bg: rgba(255,255,255,0.8); --border: rgba(0,0,0,0.06);
+      --shadow: rgba(0,0,0,0.08); --font: "Segoe UI", system-ui, sans-serif;
+    }
+    [data-theme="dark"] { --text: #f8f9fa; --bg: #121212; --card-bg: rgba(30,30,30,0.85); --border: rgba(255,255,255,0.08); --shadow: rgba(0,0,0,0.3); }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { font-size:16px; scroll-behavior:smooth; }
+    body {
+      font-family:var(--font); color:var(--text); background:var(--bg); line-height:1.6;
+      min-height:100vh; display:flex; flex-direction:column; transition:background 0.3s;
+    }
+    .bg-anim {
+      position:fixed; inset:0; z-index:-1; opacity:0.1;
+      background:linear-gradient(-45deg,#3f37c9,#4895ef,#4cc9f0,#4361ee);
+      background-size:400% 400%; animation:gradient 15s ease infinite;
+    }
+    @keyframes gradient { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+
+    .glass {
+      background:var(--card-bg); backdrop-filter:blur(10px); border-radius:12px;
+      border:1px solid var(--border); box-shadow:0 8px 32px var(--shadow);
+    }
+
+    header {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:1rem 1.5rem; margin:0.5rem; position:relative; z-index:10;
+    }
+    .header-left { display:flex; align-items:center; gap:1.5rem; }
+    .logo { font-size:1.25rem; font-weight:700; color:var(--text); text-decoration:none; }
+    .logo span { color:var(--brand); }
+    nav { display:flex; gap:1rem; }
+    nav a { color:var(--text); opacity:0.6; text-decoration:none; font-size:0.875rem; font-weight:500; }
+    nav a:hover, nav a.active { opacity:1; color:var(--brand); }
+
+    main { flex:1; max-width:960px; width:100%; margin:0 auto; padding:0.75rem; }
+    .content { padding:2rem; }
+
+    h1 { font-size:1.5rem; margin-bottom:0.5rem; }
+    .subtitle { opacity:0.65; margin-bottom:1.5rem; }
+
+    table {
+      width:100%; border-collapse:collapse; font-size:0.9rem; margin:1.5rem 0;
+    }
+    th, td { padding:0.6rem 1rem; text-align:center; border-bottom:1px solid var(--border); }
+    th { background:var(--brand); color:#fff; position:sticky; top:0; }
+    tr:nth-child(even) { background:rgba(0,0,0,0.03); }
+    tr:hover { background:rgba(49,151,149,0.08); }
+    .table-wrap { max-height:70vh; overflow-y:auto; border-radius:8px; }
+
+    .seo { margin-top:2rem; opacity:0.75; font-size:0.9rem; line-height:1.7; }
+    .seo h2 { font-size:1.15rem; margin-bottom:0.5rem; opacity:1; }
+
+    footer { padding:1rem; margin:0.5rem; margin-top:auto; text-align:center; }
+    footer p { font-size:0.8rem; opacity:0.5; }
+    footer a { color:var(--brand); text-decoration:none; }
+  </style>
+</head>
+<body>
+  <div class="bg-anim"></div>
+
+  <header class="glass">
+    <div class="header-left">
+      <a href="/" class="logo">KG<span>to</span>LBS<span>.cc</span></a>
+      <nav>
+        <a href="/">Converter</a>
+        <a href="/conversion-table" class="active">Table</a>
+        <a href="/how-to-convert-kg-to-lbs">How To</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="content glass">
+      <h1>KG to LBS Conversion Table (1–100 kg)</h1>
+      <p class="subtitle">Quick kilogram to pound lookup. Values rounded to 2 decimal places. 1 kg = 2.20462 lbs.</p>
+
+      <p><strong>Common quick references:</strong> 1 kg = 2.20 lbs · 5 kg = 11.02 lbs · 10 kg = 22.05 lbs · 50 kg = 110.23 lbs · 100 kg = 220.46 lbs</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Kilograms (kg)</th><th>Pounds (lbs)</th><th>Kilograms (kg)</th><th>Pounds (lbs)</th></tr>
+          </thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </div>
+
+      <div class="seo">
+        <h2>Kilogram to Pound Conversion Reference</h2>
+        <p>This KG to LBS conversion table covers weights from 1 kg to 100 kg. Whether you're tracking body weight, measuring ingredients, or calculating shipping weights, find your kilogram to pound conversion instantly. For more precise conversions or other unit types (length, temperature, volume, speed, area, pressure, energy, digital storage, currency), use our <a href="/">free online unit converter</a>.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="glass">
+    <p>&copy; 2026 <a href="/">KG to LBS Converter</a> &mdash; Free Online Unit Conversion Tools</p>
+  </footer>
+
+  <script>
+    const tbody = document.getElementById('table-body');
+    for (let kg = 1; kg <= 100; kg++) {
+      const lbs = (kg * 2.20462).toFixed(2);
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${kg} kg</td><td>${lbs} lbs</td>`;
+      // Add second column for side-by-side layout
+      const kg2 = kg + 50;
+      if (kg2 <= 100) {
+        const lbs2 = (kg2 * 2.20462).toFixed(2);
+        tr.innerHTML += `<td>${kg2} kg</td><td>${lbs2} lbs</td>`;
+      } else {
+        tr.innerHTML += '<td></td><td></td>';
+      }
+      tbody.appendChild(tr);
+    }
+  </script>
+</body>
+</html>
