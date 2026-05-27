@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://kgtolbs.cc/sitemap-index.xml
