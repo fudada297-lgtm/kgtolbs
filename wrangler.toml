@@ -1,0 +1,6 @@
+name = "kgtolbs"
+main = "_worker.js"
+compatibility_date = "2025-05-27"
+
+[assets]
+directory = "./"
